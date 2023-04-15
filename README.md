@@ -1,6 +1,6 @@
 ## ACL4SSR_Online_Full_Mannix.ini
 
-自定义 Clash 配置模板 https://dd.al/config
+自定义 Clash 配置模板 https://dd.al/1phZx
 
 可作为 订阅转换 配置转换 规则转换 的远程配置
 
