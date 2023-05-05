@@ -533,6 +533,8 @@ DOMAIN-SUFFIX,windowsphone-int.com
 DOMAIN-SUFFIX,windowsphone.com
 DOMAIN-SUFFIX,windowssearch.com
 DOMAIN-SUFFIX,windowsupdate.com
+DOMAIN-SUFFIX,wns.windows.com
+DOMAIN-SUFFIX,skydrive.wns.windows.com
 DOMAIN-SUFFIX,winhec.com
 DOMAIN-SUFFIX,winhec.net
 DOMAIN-SUFFIX,yammer.com

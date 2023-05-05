@@ -76,6 +76,9 @@ payload:
   - DOMAIN-SUFFIX,microsoftlatamholiday.com
   - DOMAIN-SUFFIX,microsoftmxfilantropia.com
   - DOMAIN-SUFFIX,microsoftpartnersolutions.com
+  - DOMAIN-SUFFIX,windowsupdate.com
+  - DOMAIN-SUFFIX,wns.windows.com
+  - DOMAIN-SUFFIX,skydrive.wns.windows.com
   - DOMAIN-SUFFIX,msnmaps.com
   - DOMAIN-SUFFIX,msunlimitedcloudsummit.com
   - DOMAIN-SUFFIX,myhomemsn.com
