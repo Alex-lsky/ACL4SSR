@@ -5,3 +5,5 @@ payload:
 - DOMAIN-SUFFIX,bingapis.com
 - DOMAIN-SUFFIX,poe.com
 - DOMAIN-SUFFIX,bard.google.com
+- DOMAIN-SUFFIX,grazie.ai
+- DOMAIN-SUFFIX,api.app.prod.grazie.aws.intellij.net
