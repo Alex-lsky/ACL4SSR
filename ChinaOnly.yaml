@@ -6,3 +6,5 @@ payload:
 - DOMAIN-SUFFIX,rfios.com
 - DOMAIN-SUFFIX,gopayinc.com
 - DOMAIN-SUFFIX,gopaycorp.com
+- DOMAIN-SUFFIX,awsapps.com
+- DOMAIN-SUFFIX,signin.aws
