@@ -244,6 +244,8 @@ cfw-bypass-bak:
 cfw-bypass:
   # 直连列表
   # MyList
+  - "*.awsapps.com"
+  - "*.signin.aws"
   - "*.13th.tech"
   - "*.rfios.com"
   - "*.423down.com"
@@ -262,6 +264,7 @@ cfw-bypass:
   - "*.zhenguanyu.com"
   - "*.snapdrop.net"
   - "*.tebex.io"
+  - "*.5888.space"
   # CN域名直连(中国|公司|网络)
   - "*.cn"
   - "*.xn--fiqs8s"
