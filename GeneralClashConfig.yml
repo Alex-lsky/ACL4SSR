@@ -71,15 +71,16 @@ dns:
   fake-ip-filter: # fake ip 白名单列表，如果你不知道这个参数的作用，请勿修改
      - '*.lan'
      - localhost.ptlogin2.qq.com
-  nameserver:
-     - 223.5.5.5 # 阿里DNS
-     - 180.76.76.76 # 百度DNS
-     - 119.29.29.29 # 腾讯DNS
-     - 117.50.11.11 # ONE DNS拦截版 恶意网站拦截、广告过滤
-     - 117.50.10.10 # ONE DNS纯净版 直接返回其真实的响应结果
-     - 114.114.114.114 # 114DNS
-     - https://dns.alidns.com/dns-query # 阿里 DoH DNS
-     - https://doh.pub/dns-query # 360 DoH DNS
+  nameserver:                                         # 默认 DNS 服务器(国外)
+    - https://doh.dns.sb/dns-query                    # dns.sb DoH
+    - https://doh.opendns.com/dns-query               # OpenDNS DoH
+    - tls://dns.google                                # Google DoT
+  nameserver-policy:
+    "geosite: cn,private": # 国内网址
+      - tls://dns.alidns.com                          # 阿里 DoT
+      - tls://dot.pub                                 # 腾讯 DoT
+      - 221.179.155.161                               # 运营商 DNS
+      - 221.179.155.177                               # 运营商 DNS
   fallback:
      - 8.8.8.8 # 谷歌DNS
      - 1.1.1.1 # Cloudflare DNS
