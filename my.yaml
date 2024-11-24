@@ -1,0 +1,12 @@
+proxies:
+  - name: china_mainland_home"
+    type: ssr
+    server: "tech.lhtsky.top" # 选择合适的 IP，若是公网访问应替换为您的真实 IP
+    port: 43322
+    cipher: "aes-256-cfb"
+    password: "952795278"
+    protocol: "origin"
+    protocol-param: ""
+    obfs: "tls1.2_ticket_auth"
+    obfs-param: ""
+    udp: true
