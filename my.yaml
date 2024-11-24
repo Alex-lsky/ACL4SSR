@@ -2,7 +2,7 @@ proxies:
   - name: "[SS] china home"
     type: ss
     server: "passwall.lhtsky.top"
-    port: 80
+    port: 12059
     cipher: "aes-128-gcm"
     password: "952795278"
     udp: true
