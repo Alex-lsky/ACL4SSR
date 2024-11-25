@@ -1,7 +1,7 @@
 proxies:
   - name: "[SS] china home"
     type: ss
-    server: "153.35.21.111"
+    server: "passwall.lhtsky.top"
     port: 12059
     cipher: "aes-128-gcm"
     password: "952795278"
