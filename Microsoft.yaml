@@ -64,6 +64,15 @@ payload:
   - DOMAIN-SUFFIX,biying.cn
   - DOMAIN-SUFFIX,biying.com
   - DOMAIN-SUFFIX,biying.com.cn
+  - DOMAIN-SUFFIX,microsoft.ca
+  - DOMAIN-SUFFIX,microsoft.cat
+  - DOMAIN-SUFFIX,microsoft.ch
+  - DOMAIN-SUFFIX,microsoft.cl
+  - DOMAIN-SUFFIX,microsoft.com
+  - DOMAIN-SUFFIX,microsoft.com.akadns.net
+  - DOMAIN-SUFFIX,microsoft.com.nsatc.net
+  - DOMAIN-SUFFIX,microsoft.cz
+  - DOMAIN-SUFFIX,microsoft.de
   - DOMAIN-SUFFIX,bluehatnights.com
   - DOMAIN-SUFFIX,dictate.ms
   - DOMAIN-SUFFIX,flipwithsurface.com
