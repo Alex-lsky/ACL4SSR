@@ -362,8 +362,6 @@ payload:
   - DOMAIN-SUFFIX,microsoft.cat
   - DOMAIN-SUFFIX,microsoft.ch
   - DOMAIN-SUFFIX,microsoft.cl
-  - DOMAIN-SUFFIX,microsoft.com.akadns.net
-  - DOMAIN-SUFFIX,microsoft.com.nsatc.net
   - DOMAIN-SUFFIX,microsoft.cz
   - DOMAIN-SUFFIX,microsoft.de
   - DOMAIN-SUFFIX,microsoft.dk
