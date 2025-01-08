@@ -22,6 +22,7 @@ DOMAIN-SUFFIX,stripe.com
 DOMAIN-SUFFIX,claude.ai
 DOMAIN-SUFFIX,chatgpt.com
 DOMAIN-SUFFIX,gstatic.com
+DOMAIN-SUFFIX,groq.com
 DOMAIN-KEYWORD,apis.google
 DOMAIN-KEYWORD,ai.google
 DOMAIN-KEYWORD,aistudio
