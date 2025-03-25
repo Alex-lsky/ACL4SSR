@@ -24,6 +24,7 @@ DOMAIN-SUFFIX,chatgpt.com
 DOMAIN-SUFFIX,gstatic.com
 DOMAIN-SUFFIX,groq.com
 DOMAIN-KEYWORD,apis.google
+DOMAIN-KEYWORD,anthropic.com:
 DOMAIN-KEYWORD,ai.google
 DOMAIN-KEYWORD,aistudio
 DOMAIN,ai.google.dev
