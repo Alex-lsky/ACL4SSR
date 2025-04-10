@@ -1,2 +1,3 @@
 DOMAIN,dcg.microsoft.com
 DOMAIN-SUFFIX,tailscale.com
+EXE,tailscaled.exe
