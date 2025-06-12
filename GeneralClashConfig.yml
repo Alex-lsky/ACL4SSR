@@ -114,19 +114,20 @@ dns:
 
 # 代理组
 # 下面这3个不要引到订阅里去 要不会出错
-# Will be ignored after profile selection
-#proxies:
-#  - name: Shadowsocks
-#    type: socks5
-#    server: 127.0.0.1
-#    port: 1080
-#proxy-groups:
-#  - name: Proxy
-#    type: select
-#    proxies:
-#      - Shadowsocks
-#rules:
-#  - 'MATCH,DIRECT'
+proxies:
+  - name: "[SS] china home"
+    type: ss
+    server: passwall.lhtsky.top
+    port: 12059
+    cipher: aes-128-gcm
+    password: 952795278
+    udp: true
+
+proxy-groups:
+  - name: "节点选择"
+    type: select
+    proxies:
+      - "[SS] china home"  # 自动匹配的节点
 
 # Clash for Windows
 # Proxies module latency test settings
