@@ -1,16 +1,8 @@
 proxies:
-  - name: "[trojan] china home"
-    type: trojan
-    server: "passwall.lhtsky.top"
-    port: 11299
-    skip-cert-verify: true
-    password: "df3a0433-523a-44a4-8c70-cd9268739ee9"
-    udp: true
-  - name: "[ss] china home"
+  - name: "[SS] china home"
     type: ss
     server: "passwall.lhtsky.top"
-    port: 17056
+    port: 22145
+    cipher: "aes-256-gcm"
     password: "Bill@1992930"
-    # 加密方式
-    cipher: "chacha20-ietf-poly1305"
     udp: true
