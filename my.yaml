@@ -5,4 +5,4 @@ proxies:
     port: 22059
     cipher: "aes-128-gcm"
     password: "952795278"
-    udp: true
+    udp: false
