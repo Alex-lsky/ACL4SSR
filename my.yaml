@@ -11,4 +11,6 @@ proxies:
     server: "passwall.lhtsky.top"
     port: 17056
     password: "Bill@1992930"
+    # 加密方式
+    cipher: "chacha20-ietf-poly1305"
     udp: true
