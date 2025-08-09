@@ -6,3 +6,9 @@ proxies:
     skip-cert-verify: true
     password: "df3a0433-523a-44a4-8c70-cd9268739ee9"
     udp: true
+  - name: "[ss] china home"
+    type: ss
+    server: "passwall.lhtsky.top"
+    port: 17056
+    password: "Bill@1992930"
+    udp: true
