@@ -3,7 +3,6 @@ proxies:
     type: trojan
     server: "passwall.lhtsky.top"
     port: 11299
-    cipher: "aes-128-gcm"
     skip-cert-verify: true
     password: "df3a0433-523a-44a4-8c70-cd9268739ee9"
     udp: true
