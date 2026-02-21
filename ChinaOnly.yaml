@@ -8,4 +8,7 @@ payload:
 - DOMAIN-SUFFIX,gopaycorp.com
 - DOMAIN-SUFFIX,awsapps.com
 - DOMAIN-SUFFIX,signin.aws
+- DOMAIN-SUFFIX,5888.space
+- DOMAIN-SUFFIX,elb.amazonaws.com
+- DOMAIN-SUFFIX,5888.space
 
