@@ -1,0 +1,8 @@
+proxies:
+  - name: "[SS] china home"
+    type: ss
+    server: "passwall.lhtsky.top"
+    port: 22145
+    cipher: "aes-256-gcm"
+    password: "Bill@1992930"
+    udp: true

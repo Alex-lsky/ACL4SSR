@@ -11,4 +11,6 @@ payload:
 - DOMAIN-SUFFIX,gemini.google.com
 - DOMAIN-SUFFIX,devv.ai
 - DOMAIN-SUFFIX,chatgpt.com
+- DOMAIN-KEYWORD,x.ai
+- DOMAIN-KEYWORD,cursor
 
