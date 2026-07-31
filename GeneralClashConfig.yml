@@ -72,6 +72,7 @@ experimental:
 dns:
   enable: true # 是否启用dns false
   ipv6: false
+  respect-rules: false # DNS 上游查询直连，不套规则/代理，避免 DNS 依赖死节点
   default-nameserver: # 引导解析 DoH/DoT 服务器域名（mihomo 必需）
     - 223.5.5.5
     - 119.29.29.29
@@ -90,28 +91,28 @@ dns:
      - '*.msftncsi.com' # Windows 联网检测
      - localhost.ptlogin2.qq.com
   nameserver:                                         # 主 DNS：优先 Cloudflare，防止运营商 DNS 污染
-    - https://cloudflare-dns.com/dns-query            # Cloudflare DoH
-    - https://1.1.1.1/dns-query                       # Cloudflare DoH
+    - https://cloudflare-dns.com/dns-query            # Cloudflare DoH（国内可达）
     - https://doh.dns.sb/dns-query                    # dns.sb DoH（备用）
   nameserver-policy:
     "geosite: cn,private": # 国内域名走国内 DoH/DoT，返回真实 IP 用于 GEOIP 直连
       - https://doh.pub/dns-query                     # 腾讯/华为 DoH
       - tls://dns.alidns.com                          # 阿里 DoT
       - tls://dot.pub                                 # 腾讯 DoT
-  fallback: # nameserver 结果疑似被污染/境外时回退，全部用 DoH 防污染
-    - https://cloudflare-dns.com/dns-query            # Cloudflare DoH
-    - https://dns.google/dns-query                    # Google DoH
-    - https://doh.pub/dns-query                       # 腾讯 DoH
+  fallback: # nameserver 结果疑似被污染/境外时回退，全部用国内可达的 DoH
+    - https://cloudflare-dns.com/dns-query            # Cloudflare DoH（国内可达）
+    - https://doh.pub/dns-query                       # 腾讯/华为 DoH
   fallback-filter:
      geoip: true # 默认
      ipcidr: # 在这个网段内的 IP 地址会被考虑为被污染的 IP
        - 240.0.0.0/4
 
 # DNS 设计：
+# - 8.8.8.8 / 1.1.1.1 / dns.google 等是被墙的服务，直连不可达，配置中一律不使用
 # - nameserver 优先 Cloudflare DoH（443 端口，国内可达、无污染），备用 dns.sb
 # - nameserver-policy 把国内域名(geosite:cn,private)交回国内 DoH/DoT，返回真实 CN IP，供 GEOIP,CN 直连
-# - fallback 在 nameserver 结果疑似被污染（境外 IP / 保留段 240.0.0.0/4）时启用，全部用 DoH
+# - fallback 在 nameserver 结果疑似被污染（境外 IP / 保留段 240.0.0.0/4）时启用
 # - 所有 DoH/DoT 服务器域名由 default-nameserver（223.5.5.5 / 119.29.29.29）引导解析
+# - respect-rules:false 让 DNS 上游查询直连，不套代理规则，避免 DNS 依赖代理节点存活
 # - 不使用明文/运营商 DNS 与 853 端口 DoT（国内直连易被污染或封锁）
 
 # 代理组
