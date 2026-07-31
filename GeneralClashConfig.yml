@@ -22,14 +22,21 @@ allow-lan: true
 # #192.168.122.11: 绑定单个IPv4地址
 # #"[aaaa::a8aa:ff:fe09:57d8]": 绑定单个IPv6地址
 bind-address: "*"
-ipv6: true
+ipv6: false # 与 dns.ipv6 保持一致，避免 IPv6 流量绕过代理直连
 
 # 规则模式：rule（规则） / global（全局代理）/ direct（全局直连）/ script (脚本)
 # mode: rule
 
 # 设置日志输出级别 (默认级别：silent，即不输出任何内容，以避免因日志内容过大而导致程序内存溢出）。
 # 5 个级别：silent / error / warning / info / debug。级别越高日志输出量越大，越倾向于调试，若需要请自行开启。
-log-level: info
+log-level: warning
+
+profile:
+  store-selected: true # 重启后记住分组选择
+  store-fake-ip: true # 重启后记住 fake-ip 映射，减少断连
+
+unified-delay: true # 节点测速按 TCP 握手计算，更准
+tcp-concurrent: true # 并发建连，首屏更快
 
 # Clash 的 RESTful API
 external-controller: '127.0.0.1:9090'
@@ -65,75 +72,56 @@ experimental:
 dns:
   enable: true # 是否启用dns false
   ipv6: false
+  default-nameserver: # 引导解析 DoH/DoT 服务器域名（mihomo 必需）
+    - 223.5.5.5
+    - 119.29.29.29
   listen: 0.0.0.0:53
   enhanced-mode: fake-ip # 模式：redir-host或fake-ip
   fake-ip-range: 198.18.0.1/16 #
   fake-ip-filter: # fake ip 白名单列表，如果你不知道这个参数的作用，请勿修改
      - '*.lan'
+     - '*.local' # mDNS/局域网
+     - '*.home.arpa' # 家用局域网标准域
+     - '*.internal' # 公司内网域
+     - pool.ntp.org # NTP 校时
+     - '*.ntp.org.cn' # 国内 NTP 校时
+     - '*.ts.net' # Tailscale MagicDNS：返回真实 IP，保证 tailnet 直连打洞
+     - '*.msftconnecttest.com' # Windows 联网检测（Phone Link 依赖）
+     - '*.msftncsi.com' # Windows 联网检测
      - localhost.ptlogin2.qq.com
-  nameserver:                                         # 默认 DNS 服务器(国外)
-    - https://doh.dns.sb/dns-query                    # dns.sb DoH
-    - https://doh.opendns.com/dns-query               # OpenDNS DoH
-    - tls://dns.google                                # Google DoT
+  nameserver:                                         # 主 DNS：优先 Cloudflare，防止运营商 DNS 污染
+    - https://cloudflare-dns.com/dns-query            # Cloudflare DoH
+    - https://1.1.1.1/dns-query                       # Cloudflare DoH
+    - https://doh.dns.sb/dns-query                    # dns.sb DoH（备用）
   nameserver-policy:
-    "geosite: cn,private": # 国内网址
+    "geosite: cn,private": # 国内域名走国内 DoH/DoT，返回真实 IP 用于 GEOIP 直连
+      - https://doh.pub/dns-query                     # 腾讯/华为 DoH
       - tls://dns.alidns.com                          # 阿里 DoT
       - tls://dot.pub                                 # 腾讯 DoT
-      - 221.179.155.161                               # 运营商 DNS
-      - 221.179.155.177                               # 运营商 DNS
-  fallback:
-     - 8.8.8.8 # 谷歌DNS
-     - 1.1.1.1 # Cloudflare DNS
-     - tls://dns.rubyfish.cn:853
-     - tls://1.0.0.1:853
-     - tls://dns.google:853
-     - https://dns.rubyfish.cn/dns-query
-     - https://cloudflare-dns.com/dns-query
-     - https://dns.google/dns-query
+  fallback: # nameserver 结果疑似被污染/境外时回退，全部用 DoH 防污染
+    - https://cloudflare-dns.com/dns-query            # Cloudflare DoH
+    - https://dns.google/dns-query                    # Google DoH
+    - https://doh.pub/dns-query                       # 腾讯 DoH
   fallback-filter:
      geoip: true # 默认
      ipcidr: # 在这个网段内的 IP 地址会被考虑为被污染的 IP
        - 240.0.0.0/4
 
-# 1. clash DNS 请求逻辑：
-#   (1) 当访问一个域名时， nameserver 与 fallback 列表内的所有服务器并发请求，得到域名对应的 IP 地址。
-#   (2) clash 将选取 nameserver 列表内，解析最快的结果。
-#   (3) 若解析结果中，IP 地址属于 国外，那么 clash 将选择 fallback 列表内，解析最快的结果。
-#
-#   因此，我在 nameserver 和 fallback 内都放置了无污染、解析速度较快的国内 DNS 服务器，以达到最快的解析速度。
-#   但是 fallback 列表内服务器会用在解析境外网站，为了结果绝对无污染，我仅保留了支持 DoT/DoH 的两个服务器。
-#
-# 2. clash DNS 配置注意事项：
-#   (1) 如果您为了确保 DNS 解析结果无污染，请仅保留列表内以 tls:// 或 https:// 开头的 DNS 服务器，但是通常对于国内域名没有必要。
-#   (2) 如果您不在乎可能解析到污染的结果，更加追求速度。请将 nameserver 列表的服务器插入至 fallback 列表内，并移除重复项。
-#
-# 3. 关于 DNS over HTTPS (DoH) 和 DNS over TLS (DoT) 的选择：
-#   对于两项技术双方各执一词，而且会无休止的争论，各有利弊。各位请根据具体需求自行选择，但是配置文件内默认启用 DoT，因为目前国内没有封锁或管制。
-#   DoH: 以 https:// 开头的 DNS 服务器。拥有更好的伪装性，且几乎不可能被运营商或网络管理封锁，但查询效率和安全性可能略低。
-#   DoT: 以 tls:// 开头的 DNS 服务器。拥有更高的安全性和查询效率，但端口有可能被管制或封锁。
-#   若要了解更多关于 DoH/DoT 相关技术，请自行查阅规范文档。
+# DNS 设计：
+# - nameserver 优先 Cloudflare DoH（443 端口，国内可达、无污染），备用 dns.sb
+# - nameserver-policy 把国内域名(geosite:cn,private)交回国内 DoH/DoT，返回真实 CN IP，供 GEOIP,CN 直连
+# - fallback 在 nameserver 结果疑似被污染（境外 IP / 保留段 240.0.0.0/4）时启用，全部用 DoH
+# - 所有 DoH/DoT 服务器域名由 default-nameserver（223.5.5.5 / 119.29.29.29）引导解析
+# - 不使用明文/运营商 DNS 与 853 端口 DoT（国内直连易被污染或封锁）
 
 # 代理组
-# 下面这3个不要引到订阅里去 要不会出错
-proxies:
-  - name: "[SS] china home"
-    type: ss
-    server: passwall.lhtsky.top
-    port: 12059
-    cipher: aes-128-gcm
-    password: 952795278
-    udp: true
-
-proxy-groups:
-  - name: "节点选择"
-    type: select
-    proxies:
-      - "[SS] china home"  # 自动匹配的节点
+# 节点、分组、规则均由订阅转换生成，此处不需要写死。
+# 自建节点（如 [SS] china home）请维护在 my.yaml，不要在 base 里硬编码。
 
 # Clash for Windows
 # Proxies module latency test settings
 cfw-latency-timeout: 3000
-cfw-latency-url: http://www.gstatic.com/generate_204
+cfw-latency-url: https://cp.cloudflare.com/generate_204
 
 # 混合配置（mixin）
 # 支持向所有配置文件中注入公共属性设置
