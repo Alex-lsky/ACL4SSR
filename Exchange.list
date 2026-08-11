@@ -1,0 +1,146 @@
+# Crypto Exchanges & Trading Platforms
+# 主流数字货币交易所与交易平台
+
+# --- Binance 币安 ---
+DOMAIN-SUFFIX,binance.com
+DOMAIN-SUFFIX,binance.us
+DOMAIN-SUFFIX,binance.org
+DOMAIN-SUFFIX,binance.info
+DOMAIN-SUFFIX,binancefuture.com
+DOMAIN-SUFFIX,binance.vision
+DOMAIN-SUFFIX,bnbstatic.com
+
+# --- OKX 欧易 (formerly OKEx) ---
+DOMAIN-SUFFIX,okx.com
+DOMAIN-SUFFIX,okex.com
+DOMAIN-SUFFIX,okcoin.com
+DOMAIN-SUFFIX,okb.com
+DOMAIN-SUFFIX,okxstatic.com
+
+# --- Bitget 比特 ---
+DOMAIN-SUFFIX,bitget.com
+
+# --- Bybit ---
+DOMAIN-SUFFIX,bybit.com
+DOMAIN-SUFFIX,bybit.global
+DOMAIN-SUFFIX,bytick.com
+
+# --- Coinbase ---
+DOMAIN-SUFFIX,coinbase.com
+DOMAIN-SUFFIX,coinbasepro.com
+DOMAIN-SUFFIX,coinbasecommerce.com
+
+# --- Kraken ---
+DOMAIN-SUFFIX,kraken.com
+DOMAIN-SUFFIX,krakenpro.com
+
+# --- KuCoin 库币 ---
+DOMAIN-SUFFIX,kucoin.com
+DOMAIN-SUFFIX,kucoin.org
+
+# --- HTX 火币 (Huobi) ---
+DOMAIN-SUFFIX,htx.com
+DOMAIN-SUFFIX,huobi.com
+DOMAIN-SUFFIX,hbfile.net
+
+# --- Gate.io 芝麻开门 ---
+DOMAIN-SUFFIX,gate.io
+DOMAIN-SUFFIX,gateiostorage.com
+DOMAIN-SUFFIX,gateimg.co
+
+# --- MEXC 抹茶 ---
+DOMAIN-SUFFIX,mexc.com
+DOMAIN-SUFFIX,mexc.global
+DOMAIN-SUFFIX,mexc.io
+
+# --- Crypto.com ---
+DOMAIN-SUFFIX,crypto.com
+DOMAIN-SUFFIX,cryptocom.com
+
+# --- Bitfinex ---
+DOMAIN-SUFFIX,bitfinex.com
+
+# --- BitMEX ---
+DOMAIN-SUFFIX,bitmex.com
+
+# --- Deribit ---
+DOMAIN-SUFFIX,deribit.com
+
+# --- BingX ---
+DOMAIN-SUFFIX,bingx.com
+
+# --- CoinEx ---
+DOMAIN-SUFFIX,coinex.com
+
+# --- LBank ---
+DOMAIN-SUFFIX,lbank.com
+DOMAIN-SUFFIX,lbank.info
+
+# --- AscendEX ---
+DOMAIN-SUFFIX,ascendex.com
+
+# --- BitMart ---
+DOMAIN-SUFFIX,bitmart.com
+
+# --- Phemex ---
+DOMAIN-SUFFIX,phemex.com
+
+# --- Deepcoin ---
+DOMAIN-SUFFIX,deepcoin.com
+
+# --- WhiteBIT ---
+DOMAIN-SUFFIX,whitebit.com
+
+# --- Gemini ---
+DOMAIN-SUFFIX,gemini.com
+
+# --- Robinhood ---
+DOMAIN-SUFFIX,robinhood.com
+
+# --- Bitstamp ---
+DOMAIN-SUFFIX,bitstamp.net
+
+# --- 韩国交易所 ---
+DOMAIN-SUFFIX,upbit.com
+DOMAIN-SUFFIX,upbit.kr
+DOMAIN-SUFFIX,bithumb.com
+DOMAIN-SUFFIX,bithumb.global
+DOMAIN-SUFFIX,coinone.co.kr
+
+# --- 数字资产行情 / 钱包 ---
+DOMAIN-SUFFIX,coinmarketcap.com
+DOMAIN-SUFFIX,coingecko.com
+DOMAIN-SUFFIX,trustwallet.com
+DOMAIN-SUFFIX,metamask.io
+
+# --- KYC / 身份认证 / AML 服务商 ---
+# 交易所 KYC 认证页一般在其自身域名下（已由上面的 SUFFIX 覆盖），
+# 以下为交易所跳转使用的第三方身份核验、人脸活体、AML 风控服务商
+DOMAIN-SUFFIX,sumsub.com
+DOMAIN-SUFFIX,veriff.com
+DOMAIN-SUFFIX,onfido.com
+DOMAIN-SUFFIX,jumio.com
+DOMAIN-SUFFIX,persona.co
+DOMAIN-SUFFIX,trulioo.com
+DOMAIN-SUFFIX,shuftipro.com
+DOMAIN-SUFFIX,idnow.io
+DOMAIN-SUFFIX,idnow.de
+DOMAIN-SUFFIX,au10tix.com
+DOMAIN-SUFFIX,acuant.com
+DOMAIN-SUFFIX,iproov.co
+DOMAIN-SUFFIX,facetec.com
+DOMAIN-SUFFIX,incode.com
+DOMAIN-SUFFIX,socure.com
+DOMAIN-SUFFIX,id.me
+DOMAIN-SUFFIX,vouched.ai
+DOMAIN-SUFFIX,miteksystems.com
+DOMAIN-SUFFIX,authenticid.com
+DOMAIN-SUFFIX,seon.io
+DOMAIN-SUFFIX,sanctionscanner.com
+DOMAIN-SUFFIX,elliptic.co
+DOMAIN-SUFFIX,chainalysis.com
+DOMAIN-SUFFIX,gbgplc.com
+DOMAIN-SUFFIX,idology.com
+DOMAIN-SUFFIX,clearbit.com
+DOMAIN-SUFFIX,fullstory.com
+DOMAIN-SUFFIX,sentry.io
