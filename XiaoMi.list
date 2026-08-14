@@ -1,16 +1,29 @@
-# Xiaomi / MIUI system ads
-# source: community adblock lists (ADgk / anti-AD), keep only whole-domain-safe hosts
-# NOTE: market.xiaomi.com (App Store) intentionally NOT blocked, would break downloads
+# Xiaomi / MIUI 广告与遥测推送 - 精确拦截 (ads & telemetry push only)
+# 仅拦截小米的广告投放/统计接口，不影响米家等正常服务。
+
+# ===== 重要：以下域名是米家(Mi Home)/小米账号正常工作所必需，禁止加入本表 =====
+#   io.mi.com, api.io.mi.com, account.xiaomi.com, api.mi.com,
+#   home.mi.com, iot.io.mi.com, api.home.mi.com, market.xiaomi.com (应用商店)
+# ===================================================================
+# 说明：GeneralClashConfig.yml 中的 *.mi.com / *.xiaomi.com / *xiaomi*
+#       位于 cfw-bypass(直连跳过列表)，仅使这些域名走 DIRECT，并非 REJECT，
+#       请勿删除，否则米家将无法直连。
+
+# --- 广告投放 / 展示 ---
 DOMAIN-SUFFIX,ad.mi.com
+DOMAIN-SUFFIX,ad1.mi.com
+DOMAIN-SUFFIX,ad2.mi.com
 DOMAIN-SUFFIX,adx.mi.com
+DOMAIN-SUFFIX,ad.miui.com
+DOMAIN-SUFFIX,msa.miui.com
 DOMAIN-SUFFIX,api.ad.xiaomi.com
-DOMAIN-SUFFIX,ccc.sys.miui.com
-DOMAIN-SUFFIX,api.installer.xiaomi.com
-DOMAIN-SUFFIX,data.game.xiaomi.com
-DOMAIN-SUFFIX,hd.browser.miui.com
-DOMAIN-SUFFIX,nav.browser.miui.com
+DOMAIN-SUFFIX,adv.sec.miui.com
+DOMAIN-SUFFIX,adv.sec.intl.miui.com
+DOMAIN-SUFFIX,union.mi.com
+# --- 广告 CDN / 素材 ---
+DOMAIN-SUFFIX,avlyun.com
+# --- 行为统计 / 遥测 (不影响功能) ---
 DOMAIN-SUFFIX,tracking.miui.com
 DOMAIN-SUFFIX,mistat.xiaomi.com
 DOMAIN-SUFFIX,data.mistat.xiaomi.com
 DOMAIN-SUFFIX,monitor.mistat.xiaomi.com
-DOMAIN-SUFFIX,avlyun.com
