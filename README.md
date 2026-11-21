@@ -66,3 +66,38 @@ url-test
 正则匹配大小写、简繁体，更好的匹配中转、IPLC节点
 
 LocalAreaNetwork.list 使用 DIRECT
+
+---
+
+### V3 — Google 登录 / Gemini 出口一致性修复（2026-11-21）
+
+**症状**：Gemini macOS 客户端显示「无法登录」；网页版可打开，但对话响应 2~6 秒。
+
+**根因**：OpenClash 的 Smart 内核会把配置中所有 `url-test` 分组转换成
+`type: smart` + `uselightgbm: true`，即**每一个连接独立打分选路**。
+叠加 `🚀 节点选择` 是 `select` 且默认指向 `♻️ 自动选择`（同样是 Smart），
+导致同一次 Google 登录的各个请求落到不同国家的出口：
+
+| 域名 | 用途 | 修复前出口 |
+|---|---|---|
+| `accounts.google.com` | 账号认证 | 🇺🇸 美国 Frontier |
+| `oauth2.googleapis.com` | 换取 token | 🇸🇬 新加坡 lite-02 |
+| `people.googleapis.com` | 拉取用户信息 | 🇸🇬 新加坡 lite-02 |
+| `alkalimakersuite-pa.clients6.google.com` | Gemini 后端 | 🇺🇸 美国 Cox |
+| `cloudcode-pa.googleapis.com` | Gemini 后端 | 🇹🇼 台湾 hinet |
+| `gemini.google.com` | 对话主服务 | 🇸🇬 新加坡 直连-01 |
+
+Google OAuth 要求认证链路的出口 IP 全程一致，否则风控判定会话被劫持 → 拒绝登录。
+
+**改动**：
+
+1. `固定出口` 由 `url-test` 改为 `select` —— `select` 不会被 Smart 化，手工钉一个节点后 IP 全程一致。
+   这是关键：只要还是 `url-test`，无论规则怎么配，节点都会被内核逐连接重选。
+2. 新增 `GoogleLogin.list`，把登录全链路域名（认证 / token / 用户信息 / Gemini 后端 /
+   静态资源）统一收敛到 `固定出口`，并置于 `ProxyGFWlist` **之前**，
+   避免被 `DOMAIN-KEYWORD,google` 抢先匹配到 `🚀 节点选择`。
+
+**使用**：订阅更新后在策略组里把 `固定出口` 手工选成一个固定节点
+（推荐美/日/欧的家庭宽带或直连线路，香港出口对 Gemini 一律 403），
+之后不要再切换到「自动选择」类分组。
+

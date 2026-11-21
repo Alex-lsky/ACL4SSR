@@ -1,0 +1,37 @@
+# Google 登录与 Gemini 统一出口（OAuth 会话一致性）
+#
+# 背景：Google OAuth 登录要求「认证 -> 换取 token -> 拉取用户信息 -> 调用业务后端」
+# 全流程来自同一个出口 IP。若分流把这几步分到不同国家的节点，Google 风控会判定
+# 会话被劫持，表现为 Gemini 客户端「无法登录」或登录后立刻被登出。
+#
+# 因此这些域名必须与 accounts.google.com 走同一个组（固定出口），且该组必须是
+# select 类型（不能被 OpenClash Smart 内核转换成逐连接选路的 smart 类型）。
+#
+# --- 账号认证 ---
+DOMAIN-SUFFIX,accounts.google.com
+DOMAIN-SUFFIX,accounts.youtube.com
+DOMAIN-SUFFIX,myaccount.google.com
+
+# --- OAuth / token 交换 ---
+DOMAIN-SUFFIX,oauth2.googleapis.com
+DOMAIN-SUFFIX,oauthaccountmanager.googleapis.com
+DOMAIN-SUFFIX,securetoken.googleapis.com
+DOMAIN-SUFFIX,identitytoolkit.googleapis.com
+
+# --- 用户信息 ---
+DOMAIN-SUFFIX,people.googleapis.com
+
+# --- Gemini 业务后端 ---
+DOMAIN-SUFFIX,gemini.google.com
+DOMAIN-SUFFIX,generativelanguage.googleapis.com
+DOMAIN-SUFFIX,aistudio.google.com
+DOMAIN-SUFFIX,notebooklm.google.com
+DOMAIN-SUFFIX,alkalimakersuite-pa.clients6.google.com
+DOMAIN-SUFFIX,cloudcode-pa.googleapis.com
+DOMAIN-SUFFIX,daily-cloudcode-pa.googleapis.com
+DOMAIN-SUFFIX,robinfrontend-pa.googleapis.com
+
+# --- 前端静态资源 / 反爬挑战（与登录态强相关，走不同地区会触发重认证）---
+DOMAIN-SUFFIX,gstatic.com
+DOMAIN-SUFFIX,googleusercontent.com
+DOMAIN-KEYWORD,-pa.clients6.google.com
