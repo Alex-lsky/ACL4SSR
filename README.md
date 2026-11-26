@@ -103,7 +103,7 @@ LocalAreaNetwork.list 使用 DIRECT
 
 | 策略 | 流量 | 默认选择 |
 | --- | --- | --- |
-| `🔍 谷歌服务` | Google 搜索、账户、Workspace、Play、FCM、Gemini、Antigravity（反重力）、YouTube，及 Google 服务目的 IP | 优先显示家宽节点，其次常用地区节点，也可从手动切换中选取具体节点 |
+| `🔍 谷歌服务` | Google 搜索、账户、Workspace、Play、FCM、Gemini、Antigravity（反重力）、YouTube，及 Google 服务目的 IP | 可选具体节点、手动切换或日本、新加坡、美国地区组。地区组按测速切换节点 |
 | `🤖 AI` | ChatGPT、Codex、Claude、Grok、Copilot、Cursor、OpenRouter 等 | 独立选择具体节点 |
 | `🚀 节点选择` | 通用海外站点、Telegram | 自动选择 |
 | `🎯 全球直连` | 国内通用、普通微软与苹果服务 | DIRECT |
