@@ -108,8 +108,8 @@ if DDAL_EMAIL and DDAL_PASSWORD:
         alias_scs = f"gh-{repo}-scs"
 
     url = f"https://cdn.jsdelivr.net/gh/{GITHUB_REPOSITORY}@{GITHUB_SHA}/{ini_file_name}"
-    url_dler = f"https://api.dler.io/sub?target=clash&udp=true&scv=true&config={url}"
-    url_scs = f"https://api.subcsub.com/sub?target=clash&udp=true&scv=true&config={url}"
+    url_dler = f"https://api.dler.io/sub?target=clash&udp=true&new_name=true&config={url}"
+    url_scs = f"https://api.subcsub.com/sub?target=clash&udp=true&new_name=true&config={url}"
 
     ddal = DDAL()
     ddal.login(DDAL_EMAIL, DDAL_PASSWORD)
@@ -127,8 +127,8 @@ if DDAL_EMAIL and DDAL_PASSWORD:
     print(f'{url_scs}?url=')
 else:
     url = f"https://cdn.staticaly.com/gh/{GITHUB_REPOSITORY}/{GITHUB_REF_NAME}/{ini_file_name}"
-    url_dler = f"https://api.dler.io/sub?target=clash&udp=true&scv=true&config={url}&url="
-    url_scs = f"https://api.subcsub.com/sub?target=clash&udp=true&scv=true&config={url}&url="
+    url_dler = f"https://api.dler.io/sub?target=clash&udp=true&new_name=true&config={url}&url="
+    url_scs = f"https://api.subcsub.com/sub?target=clash&udp=true&new_name=true&config={url}&url="
     print(url)
     print(url_dler)
     print(url_scs)
